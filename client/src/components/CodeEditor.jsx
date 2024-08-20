@@ -30,7 +30,7 @@ const CodeEditor = () => {
             language={language}
             defaultValue={CODE_SNIPPETS[language]}
             onMount={
-                onMount
+                
             }
             value={value}
             onChange={
