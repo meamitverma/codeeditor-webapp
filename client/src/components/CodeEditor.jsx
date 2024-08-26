@@ -8,7 +8,7 @@ import Output from "./Output.jsx";
 const CodeEditor = () => {
   const editorRef = useRef();
   const [value, setValue] = useState("");
-  const [language, setLanguage] = useState("javascript");
+  const [language, setLanguage] = useState("cpp");
 
   const onMount = (editor) => {
     editorRef.current = editor;

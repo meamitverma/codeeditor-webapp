@@ -1,6 +1,7 @@
 export const LANGUAGE_VERSIONS = {
-    javascript: "18.15.0",
-    typescript: "5.0.3",
+    cpp: "10.2.0",
+    javascript: "1.32.3",
+    typescript: "1.32.3",
     python: "3.10.0",
     java: "15.0.2",
     csharp: "6.12.0",
@@ -8,6 +9,7 @@ export const LANGUAGE_VERSIONS = {
 };
 
 export const CODE_SNIPPETS = {
+    cpp : "\n#include <bits/stdc++.h>\nusing namespace std;\n\nint main() {\n\tcout << \"Hello, World!\\n\";\n\treturn 0;\n}\n",
     javascript: `\nfunction greet(name) {\n\tconsole.log("Hello, " + name + "!");\n}\n\ngreet("Alex");\n`,
     typescript: `\ntype Params = {\n\tname: string;\n}\n\nfunction greet(data: Params) {\n\tconsole.log("Hello, " + data.name + "!");\n}\n\ngreet({ name: "Alex" });\n`,
     python: `\ndef greet(name):\n\tprint("Hello, " + name + "!")\n\ngreet("Alex")\n`,

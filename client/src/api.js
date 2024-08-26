@@ -17,3 +17,8 @@ export const executeCode = async (language, sourceCode) => {
   });
   return response.data;
 };
+
+// export const getLanguages = async () => {
+//   const response = await API.get("/runtimes");
+//   return response.data;
+// }
