@@ -1,9 +1,17 @@
 import { useState } from "react";
-import { Box, Button, Text, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Text,
+  useToast,
+  Textarea,
+  TagLabel,
+} from "@chakra-ui/react";
 import { executeCode } from "../api";
 
 const Output = ({ editorRef, language }) => {
   const toast = useToast();
+  const [stdin, setStdin] = useState(null);
   const [output, setOutput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -13,7 +21,7 @@ const Output = ({ editorRef, language }) => {
     if (!sourceCode) return;
     try {
       setIsLoading(true);
-      const { run: result } = await executeCode(language, sourceCode);
+      const { run: result } = await executeCode(language, sourceCode, stdin);
       setOutput(result.output.split("\n"));
       result.stderr ? setIsError(true) : setIsError(false);
     } catch (error) {
@@ -31,9 +39,6 @@ const Output = ({ editorRef, language }) => {
 
   return (
     <Box w="50%">
-      <Text mb={2} fontSize="lg">
-        Output
-      </Text>
       <Button
         variant="outline"
         colorScheme="green"
@@ -43,8 +48,23 @@ const Output = ({ editorRef, language }) => {
       >
         Run Code
       </Button>
+
+      <Text>Stdin</Text>
+
+      <Textarea
+        placeholder='Provide input for the program here'
+        height={"15vh"}
+        p={2}
+        border="1px solid"
+        borderRadius={4}
+        onChange={(evt) => {
+          setStdin(evt.target.value);
+          console.log(stdin);
+        }}
+      />
+      <Text mt={2}>Output</Text>
       <Box
-        height="75vh"
+        height="56vh"
         p={2}
         color={isError ? "red.400" : ""}
         border="1px solid"
